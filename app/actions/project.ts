@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { db } from "../lib/db/drizzle";
 import { studentsTable, adaTable, promotionsTable } from "../lib/db/schema";
 import { isNotNull } from "drizzle-orm";
+import { eq } from 'drizzle-orm';
 
 export const addProject = async (formData: FormData) => {
     const name = formData.get("name")
@@ -30,10 +31,14 @@ export const addProject = async (formData: FormData) => {
 }
 
 
-export async function getProjectsGroupedByAda() {
-    // Récupérer les projets étudiants publiés
-    const studentProjects = await db.select().from(studentsTable)
-        .where(isNotNull(studentsTable.published_at));
+export async function getStudProjectsGroupedByAda() {
+    const projects = await db.select()
+        .from(studentsTable)
+        .leftJoin(promotionsTable, eq(promotionsTable.id, studentsTable.promotion_id))
+        .leftJoin(adaTable, eq(adaTable.id, studentsTable.ada_project_id))
+        .where(isNotNull(studentsTable.published_at))
+
+    return projects;
 }
 
 export async function getPromotions() {

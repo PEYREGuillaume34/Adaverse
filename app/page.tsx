@@ -1,21 +1,23 @@
-import {db} from "@/app/lib/db/drizzle";
-import {adaTable} from "@/app/lib/db/schema";
+
 import ProjectForm from "./components/ProjectForm"
+import ProjectList from "./components/ProjectList";
+import { getStudProjectsGroupedByAda } from "./actions/project";
 
 
 export default async function Home() {
-    const ada = await db.select().from(adaTable);
-    return (
-        <div>
-          <header>
-            <h1 className="text-2xl">Adaverse</h1>
-            <ProjectForm />
-          </header>
-        <div>
-            {ada.map((projet) => {
-                return <div key={projet.id}>{projet.name}</div>;
-            })}
-        </div>
-        </div>
-    );
+  const projects = await getStudProjectsGroupedByAda()
+  return (
+    <div>
+      <header>
+        <h1 className="text-2xl">Adaverse</h1>
+        <ProjectForm />
+      </header>
+      <div>
+        <ProjectList projects={projects} />
+
+
+
+      </div>
+    </div>
+  );
 }
