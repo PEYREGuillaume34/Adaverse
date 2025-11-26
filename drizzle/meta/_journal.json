@@ -8,6 +8,13 @@
       "when": 1764066192921,
       "tag": "0000_tricky_starjammers",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1764099569267,
+      "tag": "0001_bouncy_scrambler",
+      "breakpoints": true
     }
   ]
 }

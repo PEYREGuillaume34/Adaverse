@@ -22,6 +22,6 @@ export const studentsTable = pgTable("students_projects", {
     demo_url: text("demo_url"),
     promotion_id: integer("promotion_id").references(() => promotionsTable.id),
     ada_project_id: integer("ada_project_id").references(() => adaTable.id),
-    published_at: timestamp("published_at").notNull().defaultNow(),
+    published_at: timestamp("published_at"),
     created_at: timestamp("created_at").notNull().defaultNow(),
 });
