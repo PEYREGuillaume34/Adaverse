@@ -15,6 +15,13 @@
       "when": 1764099569267,
       "tag": "0001_bouncy_scrambler",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1764261022728,
+      "tag": "0002_loose_jackal",
+      "breakpoints": true
     }
   ]
 }

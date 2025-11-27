@@ -18,6 +18,7 @@ export const promotionsTable = pgTable("promotions", {
 export const studentsTable = pgTable("students_projects", {
     id: serial("id").primaryKey(),
     name: text("name").notNull(),
+    slug: text("slug").notNull().unique(),
     github_url: text("github_url").notNull(),
     demo_url: text("demo_url"),
     promotion_id: integer("promotion_id").references(() => promotionsTable.id),

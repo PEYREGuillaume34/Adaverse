@@ -1,4 +1,4 @@
-import { getProjectById } from "../../actions/project"
+import { getProjectBySlug } from "../../actions/project"
 
 export default async function ProjectPage({ params }) {
     const { slug } = await params
@@ -7,7 +7,7 @@ export default async function ProjectPage({ params }) {
     const projectId = parseInt(slug)
     
     // Récupérer le projet
-    const project = await getProjectById(projectId)
+    const project = await getProjectBySlug(slug)
     
     // Si le projet n'existe pas
     if (!project) {

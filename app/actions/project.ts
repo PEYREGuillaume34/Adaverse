@@ -18,9 +18,12 @@ export const addProject = async (formData: FormData) => {
         throw new Error("Tous les champs sont obligatoires");
     }
 
+     const slug = generateSlug(name)
+
     // Insertion dans la BDD
     await db.insert(studentsTable).values({
         name: name as string,
+        slug: slug,
         github_url: githubLink,
         demo_url: demoLink,
         promotion_id: Number(promoId),
@@ -49,13 +52,23 @@ export async function getAdaProjects() {
     return await db.select().from(adaTable);
 }
 
-export async function getProjectById(id: number) {
+export async function getProjectBySlug(slug: string) {
     const result = await db.select()
         .from(studentsTable)
         .leftJoin(promotionsTable, eq(promotionsTable.id, studentsTable.promotion_id))
         .leftJoin(adaTable, eq(adaTable.id, studentsTable.ada_project_id))
-        .where(eq(studentsTable.id, id))
+        .where(eq(studentsTable.slug, slug))
     
     return result[0] || null
+}
+
+// Fonction pour générer un slug depuis un texte
+function generateSlug(text: string): string {
+    return text
+        .toLowerCase()                    // minuscules
+        .normalize('NFD')                 // décompose les accents
+        .replace(/[\u0300-\u036f]/g, '')  // enlève les accents
+        .replace(/[^a-z0-9]+/g, '-')      // remplace caractères spéciaux par -
+        .replace(/^-+|-+$/g, '')          // enlève les - au début/fin
 }
 

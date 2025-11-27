@@ -45,7 +45,7 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {projectsList.map((project) => (
                             <a
-                                href={`/project/${project.students_projects.id}`}
+                                href={`/project/${project.students_projects.slug}`}
                                 key={project.students_projects.id}
                                 className="border p-4 rounded shadow hover:shadow-lg transition"
                             >
