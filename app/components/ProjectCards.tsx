@@ -1,19 +1,31 @@
+"use client"
+import { useState } from 'react'
+
 function getThumbnailUrl(githubUrl) {
   return `${githubUrl}/blob/main/thumbnail.png?raw=true`
 }
 
 export default function ProjectCard({ project }) {
+  const [imageError, setImageError] = useState(false)
+  
   return (
     <a
       href={`/project/${project.students_projects.slug}`}
       className="border p-4 rounded shadow hover:shadow-lg transition"
     >
-      {/* Image */}
-      <img
-        src={getThumbnailUrl(project.students_projects.github_url)}
-        alt={project.students_projects.name}
-        className="w-full h-48 object-cover rounded mb-3 bg-gray-200"
-      />
+      {/* Image avec fallback */}
+      {imageError ? (
+        <div className="w-full h-48 bg-gray-200 rounded mb-3 flex items-center justify-center text-gray-500">
+          Aucune image
+        </div>
+      ) : (
+        <img
+          src={getThumbnailUrl(project.students_projects.github_url)}
+          alt={project.students_projects.name}
+          className="w-full h-48 object-cover rounded mb-3"
+          onError={() => setImageError(true)}
+        />
+      )}
 
       {/* Nom du projet */}
       <h3 className="font-semibold text-lg">

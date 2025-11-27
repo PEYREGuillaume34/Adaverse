@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { addProject } from "../actions/project";
 import SelectPromo from "./SelectPromo";
 import SelectAdaProject from "./SelectAdaProject";

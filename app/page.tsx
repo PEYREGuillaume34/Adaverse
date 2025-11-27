@@ -1,7 +1,8 @@
-import ProjectForm from "./components/ProjectForm"
+import FormModal from "./components/FormModal"
 import ProjectList from "./components/ProjectList";
 import { getPublishedProjects } from "./actions/project";
 import Link from "next/link";
+
 
 
 export default async function Home() {
@@ -14,7 +15,7 @@ export default async function Home() {
   return (
     <div>
       <header className="flex items-center justify-between p-4 border-b">
-        <h1 className="text-2xl">Adaverse</h1> <ProjectForm />
+        <h1 className="text-2xl">Adaverse</h1> <FormModal />
       </header>
       <div>
         <ProjectList projects={projects} />

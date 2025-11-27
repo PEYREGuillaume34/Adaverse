@@ -6,7 +6,7 @@ import Formulaire from "./Fomulaire";
 
 
 
-export default function ProjectForm() {
+export default function FormModal() {
     const [isOpen, setIsOpen] = useState(false);
     const [promos, setPromos] = useState([])
     const [adaProjects, setAdaProjects] = useState([])
