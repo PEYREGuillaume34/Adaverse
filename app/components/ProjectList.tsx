@@ -26,6 +26,10 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
         console.log(adaName)
     }
 
+    // Fonction pour générer l'URL de l'image depuis l'URL GitHub
+    function getThumbnailUrl(githubUrl) {
+        return `${githubUrl}/blob/main/thumbnail.png?raw=true`
+    }
     console.log("Tous les projets:", projects)
     console.log("Premier projet:", projects[0])
 
@@ -41,6 +45,13 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {projectsList.map((project) => (
                             <div key={project.students_projects.id} className="border p-4 rounded shadow">
+
+                                <img
+                                    src={getThumbnailUrl(project.students_projects.github_url)}
+                                    alt={project.students_projects.name}
+                                   className="w-full h-48 object-cover rounded mb-3 bg-gray-200"
+                                />
+
                                 {/* Nom du projet */}
                                 <h3 className="font-semibold text-lg">{project.students_projects.name}</h3>
 
