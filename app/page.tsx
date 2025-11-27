@@ -2,6 +2,7 @@
 import ProjectForm from "./components/ProjectForm"
 import ProjectList from "./components/ProjectList";
 import { getStudProjectsGroupedByAda } from "./actions/project";
+import Link from "next/link";
 
 
 export default async function Home() {
@@ -14,7 +15,6 @@ export default async function Home() {
       </header>
       <div>
         <ProjectList projects={projects} />
-
 
 
       </div>

@@ -44,12 +44,15 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
                     {/* Liste des projets de cette catégorie */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {projectsList.map((project) => (
-                            <div key={project.students_projects.id} className="border p-4 rounded shadow">
-
+                            <a
+                                href={`/project/${project.students_projects.id}`}
+                                key={project.students_projects.id}
+                                className="border p-4 rounded shadow hover:shadow-lg transition"
+                            >
                                 <img
                                     src={getThumbnailUrl(project.students_projects.github_url)}
                                     alt={project.students_projects.name}
-                                   className="w-full h-48 object-cover rounded mb-3 bg-gray-200"
+                                    className="w-full h-48 object-cover rounded mb-3 bg-gray-200"
                                 />
 
                                 {/* Nom du projet */}
@@ -67,26 +70,22 @@ export default function ProjectList({ projects }: { projects: Project[] }) {
 
                                 {/* Liens GitHub et Démo */}
                                 <div className="flex gap-2 mt-3">
-                                    <a
-                                        href={project.students_projects.github_url}
+                                    <span
                                         className="text-blue-500 text-sm hover:underline"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
                                     >
                                         GitHub
-                                    </a>
+                                    </span>
                                     {project.students_projects.demo_url && (
-                                        <a
-                                            href={project.students_projects.demo_url}
+                                        <span
                                             className="text-blue-500 text-sm hover:underline"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
                                         >
                                             Démo
-                                        </a>
+                                        </span>
                                     )}
+
+
                                 </div>
-                            </div>
+                            </a>
                         ))}
                     </div>
                 </div>

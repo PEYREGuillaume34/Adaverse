@@ -49,3 +49,13 @@ export async function getAdaProjects() {
     return await db.select().from(adaTable);
 }
 
+export async function getProjectById(id: number) {
+    const result = await db.select()
+        .from(studentsTable)
+        .leftJoin(promotionsTable, eq(promotionsTable.id, studentsTable.promotion_id))
+        .leftJoin(adaTable, eq(adaTable.id, studentsTable.ada_project_id))
+        .where(eq(studentsTable.id, id))
+    
+    return result[0] || null
+}
+
