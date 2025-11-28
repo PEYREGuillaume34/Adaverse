@@ -1,4 +1,4 @@
-import { addProject } from "../actions/project";
+import { addProject } from "../../actions/project";
 import SelectPromo from "./SelectPromo";
 import SelectAdaProject from "./SelectAdaProject";
 

@@ -1,8 +1,8 @@
 "use client"
 
-import { addProject, getPromotions, getAdaProjects } from "../actions/project";
+import { addProject, getPromotions, getAdaProjects } from "../../actions/project";
 import { useState, useEffect } from "react";
-import Formulaire from "./Fomulaire";
+import Formulaire from "./Formulaire";
 
 
 

@@ -1,5 +1,6 @@
 "use client"
 import { useState } from 'react'
+import Link from 'next/link'
 
 function getThumbnailUrl(githubUrl) {
   return `${githubUrl}/blob/main/thumbnail.png?raw=true`
@@ -9,7 +10,7 @@ export default function ProjectCard({ project }) {
   const [imageError, setImageError] = useState(false)
   
   return (
-    <a
+    <Link
       href={`/project/${project.students_projects.slug}`}
       className="border p-4 rounded shadow hover:shadow-lg transition"
     >
@@ -41,6 +42,6 @@ export default function ProjectCard({ project }) {
       <p className="text-xs text-gray-500 mt-2">
         le {new Date(project.students_projects.published_at).toLocaleDateString('fr-FR')}
       </p>
-    </a>
+    </Link>
   )
 }

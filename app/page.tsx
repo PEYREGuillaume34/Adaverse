@@ -1,27 +1,21 @@
-import FormModal from "./components/FormModal"
-import ProjectList from "./components/ProjectList";
-import { getPublishedProjects } from "./actions/project";
-import Link from "next/link";
 
+import { getPublishedProjects, getPromotions, getAdaProjects } from "./actions/project";
+import FilterData from "./components/FilterData";
 
 
 export default async function Home() {
+  // Récupérer TOUTES les données nécessaires
   const projects = await getPublishedProjects()
-
-    console.log("Nombre de projets:", projects.length) // ← AJOUTEZ CECI
-  console.log("Premier projet:", projects[0])  
-
+  const promos = await getPromotions()
+  const adaProjects = await getAdaProjects()
   
+  // Passer tout à FilterData
   return (
     <div>
-      <header className="flex items-center justify-between p-4 border-b">
-        <h1 className="text-2xl">Adaverse</h1> <FormModal />
-      </header>
-      <div>
-        <ProjectList projects={projects} />
-
-
-      </div>
+      <FilterData 
+        projects={projects}
+        promos={promos}
+      />
     </div>
   );
 }
