@@ -1,6 +1,6 @@
 import { getProjectBySlug } from "../../actions/project"
 
-export default async function ProjectPage({ params }) {
+export default async function ProjectPage({ params }: { params: { slug: string } }) {
     const { slug } = await params
     
     // Convertir le slug en nombre (pour l'instant on utilise l'ID)
@@ -41,7 +41,7 @@ export default async function ProjectPage({ params }) {
             <div className="space-y-2 mb-6">
                 <p><strong>Promotion :</strong> {project.promotions?.name}</p>
                 <p><strong>Projet Ada :</strong> {project.ada_projects?.name}</p>
-                <p><strong>Publié le :</strong> {new Date(project.students_projects.published_at).toLocaleDateString('fr-FR')}</p>
+                <p><strong>Publié le :</strong> {project.students_projects.published_at ? new Date(project.students_projects.published_at).toLocaleDateString('fr-FR') : 'Date non disponible'}</p>
             </div>
             
             {/* Liens */}

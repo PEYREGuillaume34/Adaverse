@@ -1,15 +1,10 @@
-
-import { getPublishedProjects, getPromotions, getAdaProjects } from "./actions/project";
+import { getPublishedProjects, getPromotions } from "./actions/project";
 import FilterData from "./components/FilterData";
 
-
 export default async function Home() {
-  // Récupérer TOUTES les données nécessaires
-  const projects = await getPublishedProjects()
-  const promos = await getPromotions()
-  const adaProjects = await getAdaProjects()
+  const projects = await getPublishedProjects();
+  const promos = await getPromotions();
   
-  // Passer tout à FilterData
   return (
     <div>
       <FilterData 
