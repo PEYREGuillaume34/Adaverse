@@ -29,16 +29,16 @@ export default function ProjectCardAdmin({ projectId }: Props) {
       <button
         onClick={handlePublish}
         disabled={loading}
-        className="flex-1 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold py-2 rounded-lg transition-all disabled:opacity-50"
+        className="font-oswald-semibold flex-1 bg-green-500 hover:bg-green-600 text-white text-sm py-2 rounded-lg transition-all disabled:opacity-50"
       >
-        ✓ Publier
+        ✓ PUBLIER
       </button>
       <button
         onClick={handleDelete}
         disabled={loading}
-        className="flex-1 bg-red-500 hover:bg-red-600 text-white text-sm font-semibold py-2 rounded-lg transition-all disabled:opacity-50"
+        className="font-oswald-semibold flex-1 bg-red-500 hover:bg-red-600 text-white text-sm py-2 rounded-lg transition-all disabled:opacity-50"
       >
-        ✗ Refuser
+        ✗ REFUSER
       </button>
     </div>
   )

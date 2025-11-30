@@ -35,7 +35,7 @@ export default function ProjectCard({ project }: Props) {
       {!isPublished && (
         <div className="absolute top-3 left-3 z-10">
           <span className="inline-block bg-yellow-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg animate-pulse">
-            ⏳ En attente de validation
+            ⏳ EN ATTENTE DE VALIDATION
           </span>
         </div>
       )}
@@ -69,14 +69,14 @@ export default function ProjectCard({ project }: Props) {
       {/* Contenu */}
       <div className="p-5">
         {/* Titre */}
-        <h3 className={`text-xl font-bold mb-3 transition-colors line-clamp-2 ${
+        <h3 className={`text-xl font-oswald-bold text-3xl mb-3 transition-colors line-clamp-2 ${
           isPublished ? 'text-ada-dark group-hover:text-ada-red' : 'text-gray-600'
         }`}>
           {project.students_projects.name}
         </h3>
 
         {/* Date */}
-        <p className="text-sm text-gray-500 flex items-center gap-2">
+        <p className="text-sm font-oswald-medium text-gray-500 flex items-center gap-2">
           <span>📅</span>
           {isPublished 
             ? new Date(project.students_projects.published_at).toLocaleDateString('fr-FR', {
@@ -89,7 +89,7 @@ export default function ProjectCard({ project }: Props) {
 
         {/* Si publié : indicateur hover */}
         {isPublished && (
-          <div className="mt-4 flex items-center text-ada-red font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="mt-4 flex items-center text-ada-red font-oswald-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
             Voir le projet
             <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
           </div>

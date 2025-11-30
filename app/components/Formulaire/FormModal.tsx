@@ -22,10 +22,10 @@ export default function FormModal() {
             {/* Bouton style Ada avec effet hover */}
             <button 
                 onClick={() => setIsOpen(!isOpen)}
-                className="bg-ada-red hover:bg-ada-coral text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2"
+                className="bg-ada-red hover:bg-ada-coral text-white font-oswald font-oswald-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2"
             >
                 <span>✨</span>
-                Proposer un projet
+                PROPOSER UN PROJET
             </button>
             
             {isOpen && (

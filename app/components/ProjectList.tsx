@@ -28,10 +28,10 @@ export default function ProjectList({ projects }: Props) {
                         
                         {/* Titre de catégorie avec ligne décorative */}
                         <div className="flex items-center gap-4 mb-8">
-                            <h2 className="text-4xl font-bold">
-                                <span className="text-white">Projets </span>
-                                <span className="text-ada-red">{adaName}</span>
-                                <span className="text-white ml-2 font-light text-2xl">({projectsList.length})</span>
+                            <h2 className="text-4xl">
+                                <span className="text-white font-oswald-light">Projets </span>
+                                <span className="text-ada-red font-oswald-medium">{adaName}</span>
+                                <span className="text-white ml-2 font-oswald-light text-2xl">({projectsList.length})</span>
                             </h2>
                             <div className="flex-1 h-1 bg-linear-to-r from-ada-red to-transparent rounded"></div>
                         </div>
