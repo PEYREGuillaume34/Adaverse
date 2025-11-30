@@ -1,18 +1,21 @@
 export default function SelectPromo({ promos }: { promos: { id: number; name: string }[] }) {
     return (
-        <select
-                                name="promoId"
-                                required
-                                className="w-full border border-gray-300 rounded px-3 py-2"
-                            >
-                                <option value="">Sélectionner une promo</option>
-                                {promos.map((promo) => (
-                                    <option key={promo.id} value={promo.id}>
-                                        {promo.name}
-                                    </option>
-                                ))}
-                            </select>
-
-                            
+     <div>
+                        <label className="block text-sm font-semibold text-ada-dark mb-2">
+                            Promotion
+                        </label>
+                        <select
+                            name="promoId"
+                            required
+                            className="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-ada-red focus:ring-2 focus:ring-ada-red/20 transition-all cursor-pointer"
+                        >
+                            <option value="">Sélectionner une promo</option>
+                            {promos.map((promo) => (
+                                <option key={promo.id} value={promo.id}>
+                                    {promo.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>            
     )
 }

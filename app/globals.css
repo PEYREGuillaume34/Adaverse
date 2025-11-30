@@ -22,6 +22,18 @@
   font-style: normal;
 }
 
+@font-face{
+  font-family: 'oswald';
+  src: url('/fonts/Oswald/Oswald-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face{
+  font-family: 'oswald';
+  src: url('/fonts/Oswald/Oswald-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -35,6 +47,7 @@
   --color-ada-bg: #1a1a1a;
 
   --font-futura: 'Futura', sans-serif;
+  --font-oswald: 'oswald', sans-serif;
 
   /* Définir vos couleurs personnalisées */
   --color-ada-red: #FF5757;

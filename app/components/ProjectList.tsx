@@ -7,6 +7,7 @@ type Props = {
 
 export default function ProjectList({ projects }: Props) {
     const grouped: Record<string, ProjectWithRelations[]> = {}
+    let counter = 0;
     
     for (let item of projects) {
         const adaName = item.ada_projects?.name || "Sans catégorie"
@@ -14,6 +15,7 @@ export default function ProjectList({ projects }: Props) {
             grouped[adaName] = [] 
         }
         grouped[adaName].push(item)
+        counter++;
     }
 
     return (
@@ -29,8 +31,9 @@ export default function ProjectList({ projects }: Props) {
                             <h2 className="text-4xl font-bold">
                                 <span className="text-white">Projets </span>
                                 <span className="text-ada-red">{adaName}</span>
+                                <span className="text-white ml-2 font-light text-2xl">({projectsList.length})</span>
                             </h2>
-                            <div className="flex-1 h-1 bg-gradient-to-r from-ada-red to-transparent rounded"></div>
+                            <div className="flex-1 h-1 bg-linear-to-r from-ada-red to-transparent rounded"></div>
                         </div>
 
                         {/* Grille responsive des cards */}
@@ -45,3 +48,7 @@ export default function ProjectList({ projects }: Props) {
         </div>
     )
 }
+
+
+    // Exemple : Ada Quiz [Card projet1] [Card projet2] [Card projet3]
+    //           Dataviz [Card projet4] [Card projet5]

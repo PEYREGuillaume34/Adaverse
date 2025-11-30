@@ -15,7 +15,7 @@ export default function FilterData({ projects, promos }: Props) {
 
   const filteredProjects = projects.filter((project) => {
     if (selectedPromo === "") return true;
-    return project.promotions?.id === parseInt(selectedPromo);
+    return project.promotions?.id === Number(selectedPromo);
   });
 
   return (
@@ -23,14 +23,16 @@ export default function FilterData({ projects, promos }: Props) {
       {/* Header collant avec ombre */}
       <header className="bg-white shadow-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          
+
           {/* Logo/Titre style Ada */}
-           <h1 className="text-3xl sm:text-4xl font-futura" >
+            <h1 className="text-3xl sm:text-4xl font-futura" >
+            <a href="/">
             <span className="text-ada-dark font-bold">ada</span>
             <span className="text-ada-red font-normal">verse</span>
+            </a>
           </h1>
 
-            <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3">
             {/* Filtre promo */}
             <select
               value={selectedPromo}
@@ -45,8 +47,8 @@ export default function FilterData({ projects, promos }: Props) {
               ))}
             </select>
 
-          {/* Bouton Proposer */}
-          <FormModal />
+            {/* Bouton Proposer */}
+            <FormModal />
           </div>
         </div>
       </header>

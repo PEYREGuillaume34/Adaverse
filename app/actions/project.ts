@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { db } from "../lib/db/drizzle";
 import { studentsTable, adaTable, promotionsTable } from "../lib/db/schema";
-import { isNotNull, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 
 // ==================== HELPER ====================
 
@@ -37,7 +37,7 @@ export async function addProject(formData: FormData) {
         demo_url: demoLink,
         promotion_id: Number(promoId),
         ada_project_id: Number(adaProjectId),
-        published_at: new Date(),
+        published_at: null, // Par défaut non publié
     })
 
     revalidatePath("/")
@@ -51,14 +51,22 @@ export async function publishProject(projectId: number) {
     revalidatePath("/")
 }
 
+export async function deleteProject(projectId: number) {
+    await db.delete(studentsTable)
+        .where(eq(studentsTable.id, projectId))
+    
+    revalidatePath("/")
+}
+
 // ==================== QUERIES ====================
 
-export async function getPublishedProjects() {
+// Récupérer TOUS les projets (publiés ET non publiés)
+export async function getAllProjects() {
     return await db.select()
         .from(studentsTable)
         .leftJoin(promotionsTable, eq(promotionsTable.id, studentsTable.promotion_id))
         .leftJoin(adaTable, eq(adaTable.id, studentsTable.ada_project_id))
-        .where(isNotNull(studentsTable.published_at))
+        .orderBy(studentsTable.created_at) // Plus récents en premier
 }
 
 export async function getProjectBySlug(slug: string) {
@@ -67,9 +75,10 @@ export async function getProjectBySlug(slug: string) {
         .leftJoin(promotionsTable, eq(promotionsTable.id, studentsTable.promotion_id))
         .leftJoin(adaTable, eq(adaTable.id, studentsTable.ada_project_id))
         .where(eq(studentsTable.slug, slug))
-    
+    console.log("voir result ", result[0]);
     return result[0] || null
 }
+
 
 export async function getPromotions() {
     return await db.select().from(promotionsTable)
