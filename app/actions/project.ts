@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { db } from "../lib/db/drizzle";
 import { studentsTable, adaTable, promotionsTable } from "../lib/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 
 // ==================== HELPER ====================
 
@@ -66,7 +66,7 @@ export async function getAllProjects() {
         .from(studentsTable)
         .leftJoin(promotionsTable, eq(promotionsTable.id, studentsTable.promotion_id))
         .leftJoin(adaTable, eq(adaTable.id, studentsTable.ada_project_id))
-        .orderBy(studentsTable.created_at) // Plus récents en premier
+        .orderBy(desc(studentsTable.created_at)) // Plus récents en premier
 }
 
 export async function getProjectBySlug(slug: string) {

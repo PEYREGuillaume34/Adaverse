@@ -69,7 +69,7 @@ export default function ProjectCard({ project }: Props) {
       {/* Contenu */}
       <div className="p-5">
         {/* Titre */}
-        <h3 className={`text-xl font-oswald-bold text-3xl mb-3 transition-colors line-clamp-2 ${
+        <h3 className={`font-oswald-bold text-3xl mb-3 transition-colors line-clamp-2 ${
           isPublished ? 'text-ada-dark group-hover:text-ada-red' : 'text-gray-600'
         }`}>
           {project.students_projects.name}

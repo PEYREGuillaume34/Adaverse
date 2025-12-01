@@ -53,7 +53,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 </div>
 
                 {/* Infos */}
-                <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+                <div className="bg-white flex rounded-2xl shadow-xl p-8 mb-8">
                     <h2 className="text-2xl font-oswald-bold text-ada-dark mb-6">
                         {project.students_projects.name}
                         <p className="text-sm text-gray-500 font-oswald-medium">ℹ️ Détails du projet</p>
