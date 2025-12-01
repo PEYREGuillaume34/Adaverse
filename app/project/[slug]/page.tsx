@@ -1,6 +1,6 @@
-
 import { getProjectBySlug } from "../../actions/project"
 import Link from "next/link"
+import ProjectImage from "../../components/ProjectImage"
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
@@ -10,7 +10,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
                 <div className="text-center">
-                    <h1 className="text-4xl font-oswald-bold text-ada-dark mb-4">
+                    <h1 className="text-4xl font-bold text-ada-dark mb-4">
                         Projet non trouvé 😕
                     </h1>
                     <Link
@@ -26,11 +26,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
     return (
         <div className="min-h-screen bg-ada-bg">
-            {/* Header */}
+            {/* Header avec logo cliquable */}
             <header className="bg-white shadow-md">
                 <div className="max-w-5xl mx-auto px-4 py-6">
                     {/* Logo/Titre style Ada */}
-                    
+
                     <h1 className="text-4xl font-futura" >
                         <a href="/">
                             <span className="text-ada-dark font-bold">ada</span>
@@ -52,7 +52,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     />
 
                     {/* Infos avec le nom du projet comme titre */}
-                    <div className="bg-white flex flex-col rounded-2xl p-8 space-y-6">
+                    <div className="bg-white flex flex-col rounded-2xl shadow-xl p-8 mb-15">
                         <h3 className="text-4xl flex flex-wrap font-oswald-regular justify-center text-ada-dark mb-6">
                             Nom du projet : <span className="text-4xl font-oswald-bold ml-2">{project.students_projects.name}</span>
                         </h3>
@@ -97,13 +97,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     </div>
                 </div>
 
-                {/* Boutons d'action */}
+                {/* Boutons */}
                 <div className="flex flex-col sm:flex-row gap-4">
                     <a
                         href={project.students_projects.github_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 bg-ada-dark hover:bg-gray-800 text-white font-oswald-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all text-center"
+                        className="flex-1 bg-ada-dark hover:bg-gray-800 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all text-center"
                     >
                         📂 Voir sur GitHub
                     </a>
@@ -113,7 +113,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                             href={project.students_projects.demo_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 bg-ada-red hover:bg-ada-coral text-white font-oswald-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all text-center"
+                            className="flex-1 bg-ada-red hover:bg-ada-coral text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all text-center"
                         >
                             🚀 Voir la démo
                         </a>

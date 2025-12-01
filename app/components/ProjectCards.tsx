@@ -10,12 +10,7 @@ type Props = {
 }
 
 export default function ProjectCard({ project }: Props) {
-  const [imageError, setImageError] = useState(false)
-  
-  // Vérifier si le projet est publié
   const isPublished = !!project.students_projects.published_at
-  
-  // Si non publié, c'est une div, sinon un Link
   const CardWrapper = isPublished ? Link : 'div'
   
   return (
@@ -24,14 +19,14 @@ export default function ProjectCard({ project }: Props) {
       className={`group block bg-white rounded-xl shadow-md hover:shadow-2xl overflow-hidden transition-all duration-300 border-2 relative ${
         isPublished 
           ? 'hover:-translate-y-1 border-white cursor-pointer' 
-          : 'opacity-50 border-dashed border-yellow-400 cursor-default'
+          : 'opacity-60 border-dashed border-yellow-400 cursor-default'
       }`}
     >
       {/* Badge "En attente" si non publié */}
       {!isPublished && (
         <div className="absolute top-3 left-3 z-10">
           <span className="inline-block bg-yellow-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg animate-pulse">
-            ⏳ EN ATTENTE DE VALIDATION
+            ⏳ En attente de validation
           </span>
         </div>
       )}
@@ -60,8 +55,7 @@ export default function ProjectCard({ project }: Props) {
           {project.students_projects.name}
         </h3>
 
-        {/* Date */}
-        <p className="text-sm font-oswald-medium text-gray-500 flex items-center gap-2">
+        <p className="text-sm text-gray-500 flex items-center gap-2">
           <span>📅</span>
           {isPublished 
             ? new Date(project.students_projects.published_at).toLocaleDateString('fr-FR', {
@@ -72,15 +66,13 @@ export default function ProjectCard({ project }: Props) {
             : 'En attente de publication'}
         </p>
 
-        {/* Si publié : indicateur hover */}
         {isPublished && (
-          <div className="mt-4 flex items-center text-ada-red font-oswald-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="mt-4 flex items-center text-ada-red font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
             Voir le projet
             <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
           </div>
         )}
 
-        {/* Si NON publié : boutons admin */}
         {!isPublished && (
           <ProjectCardAdmin 
             projectId={project.students_projects.id}
