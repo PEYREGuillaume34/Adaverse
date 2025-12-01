@@ -5,7 +5,7 @@ import Link from "next/link"
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
     const project = await getProjectBySlug(slug)
-    
+
     if (!project) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
@@ -13,7 +13,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     <h1 className="text-4xl font-oswald-bold text-ada-dark mb-4">
                         Projet non trouvé 😕
                     </h1>
-                    <Link 
+                    <Link
                         href="/"
                         className="inline-block bg-ada-red hover:bg-ada-coral text-white font-semibold px-6 py-3 rounded-lg transition-all"
                     >
@@ -23,30 +23,29 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </div>
         )
     }
-    
+
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-ada-bg">
             {/* Header */}
             <header className="bg-white shadow-md">
                 <div className="max-w-5xl mx-auto px-4 py-6">
-                    <Link 
-                        href="/"
-                        className="inline-flex items-center gap-2 text-ada-red hover:text-ada-coral font-oswald-semibold transition-colors mb-4"
-                    >
-                        ← Retour à l'accueil
-                    </Link>
+                    {/* Logo/Titre style Ada */}
                     
-                    <h1 className="text-4xl font-oswald-bold text-ada-dark mt-4">
-                        {project.students_projects.name}
+                    <h1 className="text-4xl font-futura" >
+                        <a href="/">
+                            <span className="text-ada-dark font-bold">ada</span>
+                            <span className="text-ada-red font-normal">verse</span>
+                        </a>
                     </h1>
+
                 </div>
             </header>
 
             <main className="max-w-5xl mx-auto px-4 py-12">
-                
+
                 {/* Image */}
                 <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
-                    <img 
+                    <img
                         src={`${project.students_projects.github_url}/blob/main/thumbnail.png?raw=true`}
                         alt={project.students_projects.name}
                         className="w-full h-96 object-cover"
@@ -56,13 +55,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 {/* Infos */}
                 <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
                     <h2 className="text-2xl font-oswald-bold text-ada-dark mb-6">
-                        ℹ️ Informations du projet
+                        {project.students_projects.name}
+                        <p className="text-sm text-gray-500 font-oswald-medium">ℹ️ Détails du projet</p>
                     </h2>
-                    
+
                     <div className="space-y-4">
                         <div>
                             <p className="text-sm text-gray-500 font-oswald-medium mb-1">🎓 Promotion</p>
-                            <p className="text-lg font-oswald-bold text-ada-dark">
+                            <p className="font-oswald-bold text-ada-dark">
                                 {project.promotions?.name || "Non spécifiée"}
                             </p>
                         </div>
@@ -77,7 +77,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                         <div>
                             <p className="text-sm text-gray-500 font-oswald-medium mb-1">📅 Publié le</p>
                             <p className="text-lg font-oswald-bold text-ada-dark">
-                                {project.students_projects.published_at 
+                                {project.students_projects.published_at
                                     ? new Date(project.students_projects.published_at).toLocaleDateString('fr-FR')
                                     : 'Date non disponible'}
                             </p>
@@ -87,7 +87,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
                 {/* Boutons d'action */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
+                    <a
                         href={project.students_projects.github_url}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -95,9 +95,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     >
                         📂 Voir sur GitHub
                     </a>
-                    
+
                     {project.students_projects.demo_url && (
-                        <a 
+                        <a
                             href={project.students_projects.demo_url}
                             target="_blank"
                             rel="noopener noreferrer"
