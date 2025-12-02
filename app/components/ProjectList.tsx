@@ -18,12 +18,16 @@ export default function ProjectList({ projects }: Props) {
         counter++;
     }
 
+     const sortedCategories = Object.entries(grouped).sort((a, b) => 
+        a[0].localeCompare(b[0])
+    )
+
     return (
         // Fond gris clair
         <div className="bg-ada-bg min-h-screen py-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                {Object.entries(grouped).map(([adaName, projectsList]) => (
+                {sortedCategories.map(([adaName, projectsList]) => (
                     <div key={adaName} className="mb-16">
                         
                         {/* Titre de catégorie avec ligne décorative */}

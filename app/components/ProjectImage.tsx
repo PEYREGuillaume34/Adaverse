@@ -21,11 +21,11 @@ export default function ProjectImage({ githubUrl, projectName, height = "h-48" }
         <div className="w-full h-full bg-gradient-to-br from-ada-blue to-ada-coral flex items-center justify-center">
           <div className="text-center">
             <img
-              className="text-white w-12 h-12 object-contain"
-              src="/folder-coder.svg"
+              className="text-white w-18 h-18 object-contain justify-center mx-auto"
+              src="/folder-code.svg"
               alt="Icône dossier"
             />
-            <p className="text-white text-sm md:text-lg font-semibold mt-2 md:mt-4">
+            <p className="text-gray-700 text-sm md:text-lg font-semibold mt-2 md:mt-4">
               Aucune image disponible
             </p>
           </div>
