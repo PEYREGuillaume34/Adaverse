@@ -1,10 +1,9 @@
 "use client"
 
-import { useState } from 'react'
 import Link from 'next/link'
 import type { ProjectWithRelations } from "../types"
 import ProjectCardAdmin from "./ProjectCardAdmin"
-import ProjectImage from "./ProjectImage"  // ← Import
+import ProjectImage from "./ProjectImage" 
 
 type Props = {
   project: ProjectWithRelations
@@ -50,7 +49,7 @@ export default function ProjectCard({ project }: Props) {
 
       {/* Contenu */}
       <div className="p-5">
-        <h3 className={`text-xl font-bold mb-3 transition-colors line-clamp-2 ${
+        <h3 className={`text-xl font-bold mb-3 transition-colors ${
           isPublished ? 'text-ada-dark group-hover:text-ada-red' : 'text-gray-600'
         }`}>
           {project.students_projects.name}
@@ -77,7 +76,6 @@ export default function ProjectCard({ project }: Props) {
         {!isPublished && (
           <ProjectCardAdmin 
             projectId={project.students_projects.id}
-            projectName={project.students_projects.name}
           />
         )}
       </div>

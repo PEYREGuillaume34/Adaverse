@@ -5,7 +5,6 @@ import { useState } from "react"
 
 type Props = {
   projectId: number
-  projectName: string
 }
 
 export default function ProjectCardAdmin({ projectId }: Props) {
