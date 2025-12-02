@@ -26,20 +26,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
     return (
         <div className="min-h-screen bg-ada-bg">
-            {/* Header avec logo cliquable */}
-            <header className="bg-white shadow-md">
-                <div className="max-w-5xl mx-auto px-4 py-6">
-                    {/* Logo/Titre style Ada */}
-
-                    <h1 className="text-4xl font-futura" >
-                        <a href="/">
-                            <span className="text-ada-dark font-bold">ada</span>
-                            <span className="text-ada-red font-normal">verse</span>
-                        </a>
-                    </h1>
-
-                </div>
-            </header>
+          
 
             <main className="max-w-5xl mx-auto px-4 py-12">
 

@@ -1,16 +1,9 @@
 import { getAllProjects, getPromotions } from "./actions/project";
-import FilterData from "./components/FilterData";
+import HomeContent from "./components/HomeContent";
 
 export default async function Home() {
   const projects = await getAllProjects();
   const promos = await getPromotions();
   
-  return (
-    <div>
-      <FilterData 
-        projects={projects}
-        promos={promos}
-      />
-    </div>
-  );
+  return <HomeContent projects={projects} promos={promos} />
 }
