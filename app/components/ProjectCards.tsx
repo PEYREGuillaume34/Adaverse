@@ -36,30 +36,20 @@ export default function ProjectCard({ project }: Props) {
         </div>
       )}
 
-      {/* Container image */}
-      <div className="relative h-48 overflow-hidden bg-gray-100">
-        {imageError ? (
-          <div className="w-full h-full bg-linear-to-br from-ada-blue to-ada-coral flex items-center justify-center">
-            <div className="text-center">
-              <span className="text-white text-4xl">🎨</span>
-              <p className="text-white text-sm font-semibold mt-2">Aucune image</p>
-            </div>
-          </div>
-        ) : (
-          <img
-            src={getThumbnailUrl(project.students_projects.github_url)}
-            alt={project.students_projects.name}
-            className={`w-full h-full object-cover ${isPublished ? 'group-hover:scale-110' : ''} transition-transform duration-500`}
-            onError={() => setImageError(true)}
-          />
-        )}
-        
-        {/* Badge promo */}
-        <div className="absolute top-3 right-3">
-          <span className="inline-block bg-ada-red text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-            {project.promotions?.name || "?"}
-          </span>
-        </div>
+      {/* Image - UTILISE LE COMPOSANT */}
+      <div className={isPublished ? 'group-hover:scale-110 transition-transform duration-500' : ''}>
+        <ProjectImage 
+          githubUrl={project.students_projects.github_url}
+          projectName={project.students_projects.name}
+          height="h-48"
+        />
+      </div>
+      
+      {/* Badge promo en overlay */}
+      <div className="absolute top-3 right-3 z-10">
+        <span className="inline-block bg-ada-red text-white text-xs font-bold px-3 py-1.5 rounded  shadow-lg">
+          {project.promotions?.name || "?"}
+        </span>
       </div>
 
       {/* Contenu */}

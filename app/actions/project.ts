@@ -66,7 +66,7 @@ export async function getAllProjects() {
         .from(studentsTable)
         .leftJoin(promotionsTable, eq(promotionsTable.id, studentsTable.promotion_id))
         .leftJoin(adaTable, eq(adaTable.id, studentsTable.ada_project_id))
-        .orderBy(studentsTable.created_at) // Plus récents en premier
+        .orderBy(desc(studentsTable.published_at)) // Plus récents en premier
 }
 
 export async function getProjectBySlug(slug: string) {
