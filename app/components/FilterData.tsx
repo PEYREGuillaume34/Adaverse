@@ -25,10 +25,10 @@ export default function FilterData({ projects, promos }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
 
           {/* Logo/Titre style Ada */}
-            <h1 className="text-4xl font-futura" >
+            <h1 className="text-5xl font-futura" >
             <a href="/">
             <span className="text-ada-dark font-bold">ada</span>
-            <span className="text-ada-red font-normal">verse</span>
+            <span className="text-ada-red font-normal text-5xl">verse</span>
             </a>
           </h1>
 

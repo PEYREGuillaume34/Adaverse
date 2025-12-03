@@ -32,10 +32,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     {/* Logo/Titre style Ada */}
 
                     <h1 className="text-4xl font-futura" >
-                        <a href="/">
+                        <Link href="/">
                             <span className="text-ada-dark font-bold">ada</span>
                             <span className="text-ada-red font-normal">verse</span>
-                        </a>
+                        </Link>
                     </h1>
 
                 </div>

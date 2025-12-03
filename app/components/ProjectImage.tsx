@@ -18,10 +18,10 @@ export default function ProjectImage({ githubUrl, projectName, height = "h-48" }
   return (
     <div className={`relative ${height} overflow-hidden bg-gray-100`}>
       {imageError ? (
-        <div className="w-full h-full bg-gradient-to-br from-ada-blue to-ada-coral flex items-center justify-center">
+        <div className="w-full h-full bg-linear-to-br from-ada-blue to-ada-coral flex items-center justify-center">
           <div className="text-center">
             <img
-              className="text-white w-18 h-18 object-contain justify-center mx-auto"
+              className="text-gray-500 w-18 h-18 object-contain justify-center mx-auto"
               src="/folder-code.svg"
               alt="Icône dossier"
             />
