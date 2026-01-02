@@ -7,7 +7,7 @@ type Props = {
 
 export default function ProjectList({ projects }: Props) {
     const grouped: Record<string, ProjectWithRelations[]> = {}
-    let counter = 0;
+    
     
     for (let item of projects) {
         const adaName = item.ada_projects?.name || "Sans catégorie"
@@ -15,7 +15,7 @@ export default function ProjectList({ projects }: Props) {
             grouped[adaName] = [] 
         }
         grouped[adaName].push(item)
-        counter++;
+        
     }
 
      const sortedCategories = Object.entries(grouped).sort((a, b) => 
